@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../config/my_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../chat/chat_page.dart';
 
@@ -70,18 +69,23 @@ class _ChatRoomsPageState extends State<ChatRoomsPage> {
           return Column(
             children: [
               for (int i = 0; i < listaSalas.length; i++)
-                buildSala(listaSalas[i]["nome_da_sala"]),
+                buildSala(listaSalas[i]["nome_da_sala"],
+                    listaSalas[i]["horario_da_sala"]),
             ],
           );
         });
   }
 
-  Widget buildSala(String nomedaSala) {
+  Widget buildSala(String nomedaSala, int horarioDaSala) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (BuildContext context) => ChatPage(nomeDaSala: nomedaSala),
+            builder: (BuildContext context) => ChatPage(
+              nomeDaSala: nomedaSala,
+              horarioDaSala: horarioDaSala,
+              userName: widget.nomeUsuario,
+            ),
           ),
         );
       },

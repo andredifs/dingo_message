@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../config/my_colors.dart';
-import '../welcome/welcome_page.dart';
 import '../chat_rooms/chat_rooms.dart';
 
 class LoginPage extends StatefulWidget {
